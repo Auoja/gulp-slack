@@ -1,0 +1,26 @@
+{
+  "name": "gulp-slack",
+  "description": "Post messages to Slack",
+
+  "version": "0.0.1",
+
+  "author": {
+    "name": "Anton Auoja"
+  },
+  "main": "./index.js",
+  "keywords": [
+    "gulp",
+    "gulpplugin"
+  ],
+  "dependencies" : {
+    "gulp-util": "*",
+    "through2": "*",
+    "request": "*"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/Auoja/gulp-slack/raw/master/LICENSE"
+    }
+  ]
+}
