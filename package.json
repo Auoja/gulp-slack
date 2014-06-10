@@ -1,6 +1,6 @@
 {
   "name": "gulp-slack",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Post messages to Slack",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,7 @@
       "url": "http://github.com/Auoja/gulp-slack/raw/master/LICENSE"
     }
   ],
+  "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/Auoja/gulp-slack/issues"
   },
