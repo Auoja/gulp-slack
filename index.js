@@ -5,26 +5,35 @@ var request = require('request');
 
 var PLUGIN_NAME = 'gulp-slack'
 
+var toType = function (obj) {
+    return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
+}
+
 module.exports = function (param) {
 
     var options = {
         url: 'https://' + param.team + '.slack.com/services/hooks/incoming-webhook?token=' + param.token
     };
 
-    var post = {
+    var basePost = {
         'channel': param.channel,
         'username': param.user || 'Gulp-Slack',
-        'text': 'No Text',
         'icon_emoji': param.icon_emoji || ':neckbeard:'
     };
 
 
-    var writeTextToSlack = function (text, attachments) {
+    var writeTextToSlack = function (input) {
 
-        post['text'] = text || 'No Text';
+        var post = basePost;
+        var inputType = toType(input);
 
-        if (attachments) {
-            post['attachments'] = attachments;
+        if (inputType === 'string') {
+            post['text'] = input;
+        } else if (inputType === 'array') {
+            post['attachments'] = input;
+        } else {
+            gutil.log(PLUGIN_NAME + ':', 'Input should be a text string or an attachments array.'));
+            return through.obj();
         }
 
         options.body = JSON.stringify(post);
