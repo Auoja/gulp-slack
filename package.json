@@ -1,6 +1,6 @@
 {
   "name": "gulp-slack",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Post messages to Slack",
   "main": "index.js",
   "scripts": {
