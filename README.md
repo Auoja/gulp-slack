@@ -11,7 +11,8 @@ var sftp = require('gulp-sftp');
 var slack = require('gulp-slack')({
     token: '*Your slack token*',
     team: 'foo',
-    channel: 'bar'
+    channel: 'bar',
+    icon_emoji: ':bowtie:'
 });
 
 gulp.task('deploy', function () {

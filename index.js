@@ -15,7 +15,7 @@ module.exports = function (param) {
         'chann': param.channel,
         'username': param.user || 'Gulp-Slack',
         'text': 'No Text',
-        'icon_emoji': ':neckbeard:'
+        'icon_emoji': param.icon_emoji || ':neckbeard:'
     };
 
 
