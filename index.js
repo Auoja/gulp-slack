@@ -19,9 +19,13 @@ module.exports = function (param) {
     };
 
 
-    var writeTextToSlack = function (text) {
+    var writeTextToSlack = function (text, attachments) {
 
         post['text'] = text || 'No Text';
+
+        if (attachments) {
+            post['attachments'] = attachments;
+        }
 
         options.body = JSON.stringify(post);
 
