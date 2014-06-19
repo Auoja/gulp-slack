@@ -12,7 +12,7 @@ module.exports = function (param) {
     };
 
     var post = {
-        'chann': param.channel,
+        'channel': param.channel,
         'username': param.user || 'Gulp-Slack',
         'text': 'No Text',
         'icon_emoji': ':neckbeard:'
@@ -27,7 +27,7 @@ module.exports = function (param) {
 
         request(options, function (error, response, body) {
             if (!error && response.statusCode === 200) {
-                gutil.log(PLUGIN_NAME + ':', 'Posted update to', gutil.colors.green(post['chann']));
+                gutil.log(PLUGIN_NAME + ':', 'Posted update to', gutil.colors.green(post['channel']));
             } else if (!error) {
                 gutil.log(PLUGIN_NAME + ':', gutil.colors.red(response.statusCode + ' - Something went wrong'));
             } else if (error) {
