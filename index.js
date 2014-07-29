@@ -3,11 +3,11 @@ var gutil = require('gulp-util');
 var through = require('through2');
 var request = require('request');
 
-var PLUGIN_NAME = 'gulp-slack'
+var PLUGIN_NAME = 'gulp-slack';
 
 var toType = function (obj) {
     return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
-}
+};
 
 module.exports = function (param) {
 
@@ -28,11 +28,11 @@ module.exports = function (param) {
         var inputType = toType(input);
 
         if (inputType === 'string') {
-            post['text'] = input;
+            post.text = input;
         } else if (inputType === 'array') {
-            post['attachments'] = input;
+            post.attachments = input;
         } else {
-            gutil.log(PLUGIN_NAME + ':', 'Input should be a text string or an attachments array.'));
+            gutil.log(PLUGIN_NAME + ':', 'Input should be a text string or an attachments array.');
             return through.obj();
         }
 
