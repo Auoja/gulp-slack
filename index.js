@@ -17,9 +17,14 @@ module.exports = function (param) {
 
     var basePost = {
         'channel': param.channel,
-        'username': param.user || 'Gulp-Slack',
-        'icon_emoji': param.icon_emoji || ':neckbeard:'
+        'username': param.user || 'Gulp-Slack'
     };
+
+    if (param.icon_url) {
+        basePost.icon_url = param.icon_url;
+    } else {
+        basePost.icon_emoji: param.icon_emoji || ':neckbeard:'
+    }
 
 
     var writeTextToSlack = function (input) {
