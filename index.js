@@ -23,7 +23,7 @@ module.exports = function (param) {
     if (param.icon_url) {
         basePost.icon_url = param.icon_url;
     } else {
-        basePost.icon_emoji: param.icon_emoji || ':neckbeard:'
+        basePost.icon_emoji = param.icon_emoji || ':neckbeard:';
     }
 
 
