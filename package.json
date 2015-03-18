@@ -1,15 +1,14 @@
 {
   "name": "gulp-slack",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Post messages to Slack",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "request": "2.36.x",
-    "through2": "0.4.x",
-    "gulp-util": "2.2.x"
+    "node-slack": "git://github.com/Auoja/node-slack.git",
+    "through2": "0.4.x"
   },
   "repository": {
     "type": "git",

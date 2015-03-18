@@ -1,62 +1,15 @@
-var gutil = require('gulp-util');
-
 var through = require('through2');
-var request = require('request');
+var slack = require('node-slack');
 
-var PLUGIN_NAME = 'gulp-slack';
+module.exports = function(param) {
 
-var toType = function (obj) {
-    return ({}).toString.call(obj).match(/\s([a-zA-Z]+)/)[1].toLowerCase();
-};
+    slack.setup(param);
 
-module.exports = function (param) {
-
-    var options = {
-        url: 'https://' + param.team + '.slack.com/services/hooks/incoming-webhook?token=' + param.token
-    };
-
-    var basePost = {
-        'channel': param.channel,
-        'username': param.user || 'Gulp-Slack'
-    };
-
-    if (param.icon_url) {
-        basePost.icon_url = param.icon_url;
-    } else {
-        basePost.icon_emoji = param.icon_emoji || ':neckbeard:';
-    }
-
-
-    var writeTextToSlack = function (input) {
-
-        var post = basePost;
-        var inputType = toType(input);
-
-        if (inputType === 'string') {
-            post.text = input;
-        } else if (inputType === 'array') {
-            post.attachments = input;
-        } else {
-            gutil.log(PLUGIN_NAME + ':', 'Input should be a text string or an attachments array.');
-            return through.obj();
-        }
-
-        options.body = JSON.stringify(post);
-
-        request(options, function (error, response, body) {
-            if (!error && response.statusCode === 200) {
-                gutil.log(PLUGIN_NAME + ':', 'Posted update to', gutil.colors.green(post['channel']));
-            } else if (!error) {
-                gutil.log(PLUGIN_NAME + ':', gutil.colors.red(response.statusCode + ' - Something went wrong'));
-            } else if (error) {
-                gutil.log(PLUGIN_NAME + ':', gutil.colors.red('Something went really wrong'));
-                gutil.log(error);
-            }
-        });
-
+    var post = function(input) {
+        slack.postToSlack(input);
         return through.obj();
     };
 
-    return writeTextToSlack;
+    return post;
 
 };
