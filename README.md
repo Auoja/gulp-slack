@@ -14,6 +14,7 @@ var slack = require('gulp-slack')({
     token: '*Your slack token*',
     team: 'foo',
     channel: '#bar',
+    icon_url: 'http://foo.com/bar.jpg', // optional
     icon_emoji: ':bowtie:'
 });
 
