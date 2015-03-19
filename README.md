@@ -25,7 +25,7 @@ gulp.task('deploy', function () {
             user: 'johndoe',
             pass: '1234'
         }))
-        .pipe(slack.post('Deployed latest build'));
+        .pipe(slack('Deployed latest build'));
 });
 
 ```
@@ -71,7 +71,7 @@ gulp.task('deploy', function () {
             user: 'johndoe',
             pass: '1234'
         }))
-        .pipe(slack.post([
+        .pipe(slack([
             {
                 'fallback': 'Latest build available <https://website.com/|here>',
                 'pretext': 'Latest build available <https://website.com/|here>',
