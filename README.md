@@ -1,5 +1,4 @@
-gulp-slack
-==========
+#gulp-slack
 
 Simple gulp plugin to post information to Slack.
 
@@ -11,11 +10,11 @@ Simple gulp plugin to post information to Slack.
 
 var sftp = require('gulp-sftp');
 var slack = require('gulp-slack')({
-    token: '*Your slack token*',
-    team: 'foo',
-    channel: '#bar',
-    icon_url: 'http://foo.com/bar.jpg', // optional
-    icon_emoji: ':bowtie:'
+    url: '*Your Webhook URL*',
+    channel: '#foo', // Optional
+    user: 'bar', // Optional
+    icon_url: 'http://foo.com/bar.jpg', // Optional
+    icon_emoji: ':bowtie:' // Optional
 });
 
 gulp.task('deploy', function () {
@@ -58,10 +57,11 @@ Example:
 
 var sftp = require('gulp-sftp');
 var slack = require('gulp-slack')({
-    token: '*Your slack token*',
-    team: 'foo',
-    channel: '#bar',
-    icon_emoji: ':bowtie:'
+    url: '*Your Webhook URL*',
+    channel: '#foo', // Optional
+    user: 'bar', // Optional
+    icon_url: 'http://foo.com/bar.jpg', // Optional
+    icon_emoji: ':bowtie:' // Optional
 });
 
 gulp.task('deploy', function () {
@@ -77,11 +77,11 @@ gulp.task('deploy', function () {
                 'pretext': 'Latest build available <https://website.com/|here>',
                 'color': '#daa520',
                 'fields': [
-                	{
-                    	'title': 'Notes',
-                    	'value': 'Gulp is awesome!'
-                	}
-            	]
+                    {
+                        'title': 'Notes',
+                        'value': 'Gulp is awesome!'
+                    }
+                ]
             }
         ]));
 });
